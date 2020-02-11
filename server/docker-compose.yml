@@ -1,0 +1,33 @@
+version: '3.7'
+
+services:
+  db:
+    image: mongo:4.2.3
+    restart: always
+    environment:
+      - MONGO_INITDB_DATABASE=reada
+      - MONGO_INITDB_ROOT_USERNAME=reada
+      - MONGO_INITDB_ROOT_PASSWORD=reada-db
+    ports:
+      - 27017:27017
+
+  api:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    image: reada-api:0.1.0
+    container_name: reada-api
+    environment:
+      - PORT=4000
+    ports:
+      - '4000:4000'
+    depends_on:
+      - db
+    links:
+      - db
+    volumes:
+      - ./src:/usr/app/src
+    environment:
+      - DB_ENDPOINT=db
+      - DB_USERNAME=reada
+      - DB_PASSWORD=reada-db
