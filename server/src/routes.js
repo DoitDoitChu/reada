@@ -30,11 +30,11 @@ const routes = {
   userDetail: USER_DETAIL,
   editProfile: EDIT_PROFILE,
   changePassword: CHANGE_PASSWORD,
-  videos: BOOKS,
+  books: BOOKS,
   upload: UPLOAD,
-  videoDetail: BOOK_DETAIL,
-  editVideo: EDIT_BOOK,
-  deleteVideo: DELETE_BOOK
+  bookDetail: BOOK_DETAIL,
+  editBook: EDIT_BOOK,
+  deleteBook: DELETE_BOOK
 };
 
 export default routes;
