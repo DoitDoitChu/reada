@@ -2,7 +2,8 @@ version: '3.7'
 
 services:
   db:
-    image: mongo:4.2.3
+    image: mongo:latest
+    container_name: "mongodb"
     restart: always
     environment:
       - MONGO_INITDB_DATABASE=reada
@@ -10,6 +11,7 @@ services:
       - MONGO_INITDB_ROOT_PASSWORD=reada-db
     ports:
       - 27017:27017
+    command: mongod
 
   api:
     build:

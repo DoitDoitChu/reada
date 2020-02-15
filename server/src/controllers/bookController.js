@@ -1,5 +1,5 @@
 /* eslint-disable import/prefer-default-export */
-export const home = (req, res) => res.json({ success: true, message: 'READA API' });
+export const home = (req, res) => res.send({ success: true, message: 'READA API' });
 export const search = (req, res) => res.json({ success: true, message: 'search' });
 
 export const books = (req, res) => res.json({ success: true, message: 'books' });
