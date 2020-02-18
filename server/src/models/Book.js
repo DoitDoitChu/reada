@@ -21,7 +21,13 @@ const BookSchema = new mongoose.Schema({
   updatedAt: {
     type: Date,
     dafault: Date.now
-  }
+  },
+  reviews: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Review'
+    }
+  ]
 });
 
 const model = mongoose.model('Book', BookSchema);

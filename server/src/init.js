@@ -1,7 +1,7 @@
 import dotenv from 'dotenv';
 import './db';
 import app from './app';
-import './models/Books';
+import './models/Book';
 
 dotenv.config();
 
