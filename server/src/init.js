@@ -2,6 +2,9 @@ import dotenv from 'dotenv';
 import './db';
 import app from './app';
 import './models/Book';
+import './models/Genre';
+import './models/User';
+import './models/Review';
 
 dotenv.config();
 
