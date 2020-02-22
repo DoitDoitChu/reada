@@ -27,7 +27,11 @@ const BookSchema = new mongoose.Schema({
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Review'
     }
-  ]
+  ],
+  genre: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Genre'
+  }
 });
 
 const model = mongoose.model('Book', BookSchema);
