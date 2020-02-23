@@ -1,31 +1,32 @@
 import passport from 'passport';
-import User from '../models/User';
+import jwt from 'jsonwebtoken';
 
 /* eslint-disable import/prefer-default-export */
 export const join = async (req, res) => {
-  const {
-    body: { name, email, password, password2 }
-  } = req;
-
-  if (password !== password2) {
-    return res.status(400).json({ success: false, error: 'two password different' });
-  }
-
-  try {
-    const user = await User({
-      name,
-      email
-    });
-    await User.register(user, password);
-  } catch (error) {
-    return res.status(500).json({ success: false, error: 'Sorry, we have some errors' });
-  }
-
-  return res.status(200).json({ success: true, message: 'Join success' });
+  res.json({
+    message: 'Join Seccessfully',
+    user: req.user
+  });
 };
-export const login = (req, res) => {
-  return res.status(200).json({ success: true, message: 'login success' });
+export const login = (req, res) => async (req, res, next) => {
+  passport.authenticate('login', async (err, user, info) => {
+    try {
+      if (err || !user) {
+        const error = new Error('An Error occurred');
+        return next(error);
+      }
+      req.login(user, { session: false }, async error => {
+        if (error) return next(error);
+        const body = { _id: user._id, email: user.email };
+        const token = jwt.sign({ user: body }, 'top_secret');
+        return res.json({ token });
+      });
+    } catch (error) {
+      return next(error);
+    }
+  })(req, res, next);
 };
+
 export const logout = (req, res) => res.json({ message: 'logout' });
 export const users = (req, res) => res.json({ message: 'users' });
 export const userDetail = (req, res) => res.json({ message: 'userDetail' });

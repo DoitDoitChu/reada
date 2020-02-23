@@ -6,12 +6,14 @@ services:
     container_name: "mongodb"
     restart: always
     environment:
-      - MONGO_INITDB_DATABASE=reada
-      - MONGO_INITDB_ROOT_USERNAME=reada
-      - MONGO_INITDB_ROOT_PASSWORD=reada-db
+      MONGO_INITDB_ROOT_USERNAME: reada
+      MONGO_INITDB_ROOT_PASSWORD: reada-db
+      MONGO_INITDB_DATABASE: reada
     ports:
       - 27017:27017
     command: mongod
+    volumes:
+      - ./scripts/:/docker-entrypoint-initdb.d
 
   api:
     build:
@@ -30,6 +32,6 @@ services:
     volumes:
       - ./src:/usr/app/src
     environment:
-      - DB_ENDPOINT=db
-      - DB_USERNAME=reada
-      - DB_PASSWORD=reada-db
+      DB_ENDPOINT: db
+      DB_USERNAME: reada
+      DB_PASSWORD: reada-db

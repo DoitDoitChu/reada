@@ -9,11 +9,13 @@ import routes from './routes';
 import userRouter from './routes/userRouter';
 import bookRouter from './routes/bookRouter';
 
+import './util/auth';
+
 const app = express();
 
 app.use(cookieParser());
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(helmet());
 app.use(cors());
 app.use(morgan('combined'));
@@ -21,5 +23,10 @@ app.use(morgan('combined'));
 app.use(routes.home, globalRouter);
 app.use(routes.users, userRouter);
 app.use(routes.books, bookRouter);
+
+app.use(function(err, req, res, next) {
+  res.status(err.status || 500);
+  res.json({ error: err });
+});
 
 export default app;
