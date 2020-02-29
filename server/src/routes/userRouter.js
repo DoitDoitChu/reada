@@ -1,7 +1,7 @@
 import express from 'express';
+import passport from 'passport';
 import routes from '../routes';
 import { users, userDetail, editProfile } from '../controllers/userController';
-import passport from 'passport';
 
 const userRouter = express.Router();
 

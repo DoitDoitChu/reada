@@ -8,7 +8,7 @@ export const join = async (req, res) => {
     user: req.user
   });
 };
-export const login = (req, res) => async (req, res, next) => {
+export const login = async (req, res, next) => {
   passport.authenticate('login', async (err, user, info) => {
     try {
       if (err || !user) {

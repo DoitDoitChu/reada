@@ -1,6 +1,5 @@
 import mongoose from 'mongoose';
 import bcrypt from 'bcrypt';
-// import passportLocalMongoose from 'passport-local-mongoose';
 
 const UserSchema = new mongoose.Schema({
   name: String,
@@ -16,8 +15,6 @@ const UserSchema = new mongoose.Schema({
   avatarUrl: String,
   facebookId: String
 });
-
-// UserSchema.plugin(passportLocalMongoose, { usernameField: 'email' });
 
 UserSchema.pre('save', async function(next) {
   const user = this;
