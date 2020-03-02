@@ -1,6 +1,6 @@
 import React from 'react';
 import MyComponent from './MyComponent';
-import { withKnobs, text, boolean, number } from '@storybook/addon-knobs';
+import { withKnobs, text, boolean } from '@storybook/addon-knobs';
 
 export default {
   component: MyComponent,
