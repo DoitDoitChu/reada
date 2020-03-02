@@ -9,7 +9,10 @@ module.exports = {
     },
     '@storybook/addon-actions',
     '@storybook/addon-links',
-    '@storybook/addon-docs',
     '@storybook/addon-knobs/register',
+    {
+      name: '@storybook/addon-docs/react/preset',
+      options: { configureJSX: true },
+    },
   ],
 };
