@@ -8,6 +8,8 @@ import { Provider } from 'react-redux';
 import rootReducer, { rootSaga } from './store/index';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import createSagaMiddleware from 'redux-saga';
+import { ThemeProvider } from 'styled-components';
+import theme from './assets/theme';
 
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(
@@ -20,8 +22,10 @@ sagaMiddleware.run(rootSaga);
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
-      <GlobalReset />
-      <App />
+      <ThemeProvider theme={theme}>
+        <GlobalReset />
+        <App />
+      </ThemeProvider>
     </BrowserRouter>
   </Provider>,
   document.getElementById('root'),
