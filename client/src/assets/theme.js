@@ -1,8 +1,9 @@
-export const theme = {
+const theme = {
   color: {
     white: '#fff',
     black: '#000',
-    lightGrey: '#F8F8F8',
+    lightGray: '#F8F8F8',
+    darkGray: '#707070',
     darkGrayishBlue: '#303538',
     vividBlue: '#1F8CE6',
   },
@@ -10,3 +11,5 @@ export const theme = {
     small: '76px',
   },
 };
+
+export default theme;
