@@ -25,8 +25,7 @@ app.use(routes.users, userRouter);
 app.use(routes.books, bookRouter);
 
 app.use(function(err, req, res, next) {
-  res.status(err.status || 500);
-  res.json({ error: err });
+  return res.status(err.status || 500).json({ error: err });
 });
 
 export default app;
