@@ -52,17 +52,30 @@ export const join = async (req, res, next) => {
   }
 };
 export const login = async (req, res, next) => {
-  passport.authenticate('login', { session: false }, async (err, user) => {
+  passport.authenticate('login', { session: false }, async (err, user, info) => {
     try {
       if (err || !user) {
-        const error = new Error('An Error occurred');
-        return next(error);
+        return res.status(403).json({
+          success: false,
+          message: info,
+          state: null
+        });
       }
       req.login(user, { session: false }, async error => {
-        if (error) return next(error);
+        if (error) {
+          return res.status(403).json({
+            success: false,
+            message: error,
+            state: null
+          });
+        }
         const body = { _id: user._id, email: user.email };
-        const token = jwt.sign({ user: body }, 'top_secret');
-        return res.json({ token });
+        const token = jwt.sign({ user: body }, process.env.JWT_SECRET);
+        return res.status(200).json({
+          success: true,
+          message: '로그인인을 성공적으로 하셨습니다.',
+          state: token
+        });
       });
     } catch (error) {
       return next(error);
