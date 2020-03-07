@@ -21,6 +21,7 @@ services:
       dockerfile: ./Dockerfile
     image: reada-api:0.1.0
     container_name: reada-api
+    restart: always
     environment:
       - PORT=4000
     ports:

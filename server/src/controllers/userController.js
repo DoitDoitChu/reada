@@ -1,15 +1,58 @@
 import passport from 'passport';
 import jwt from 'jsonwebtoken';
+import UserModel from '../models/User';
 
-/* eslint-disable import/prefer-default-export */
-export const join = async (req, res) => {
-  res.json({
-    message: 'Join Seccessfully',
-    user: req.user
-  });
+export const join = async (req, res, next) => {
+  try {
+    const { email, password, password2, username } = req.body;
+    const emailRegexr = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
+    const passwordRegexr = /(?=.*\d)(?=.*[`~!@#$%^&*|₩₩₩'₩";:₩/?])(?=.*[a-zA-Z]).{8,}/;
+
+    if (!emailRegexr.test(email)) {
+      return res.status(401).json({
+        success: false,
+        message: '이메일 형식에 맞지 않습니다.',
+        result: null
+      });
+    }
+    if (!passwordRegexr.test(password)) {
+      return res.status(401).json({
+        success: false,
+        message: '비밀번호는 8자 이상, 영문, 숫자, 특수문자를 포함하여야 합니다.',
+        result: null
+      });
+    }
+
+    if (password !== password2) {
+      return res.status(400).json({
+        success: false,
+        message: 'password와 password2가 일치하지 않습니다.',
+        result: null
+      });
+    }
+    const exUser = await UserModel.findOne({ email });
+
+    if (exUser) {
+      return res.status(403).json({
+        success: false,
+        message: '해당 이메일을 가진 사용자가 존재합니다.',
+        result: null
+      });
+    }
+    const user = new UserModel({ email, password, username });
+    user.save();
+    return res.status(200).json({
+      success: true,
+      message: '회원가입이 완료되었습니다.',
+      result: null
+    });
+  } catch (error) {
+    console.log(error);
+    return next(error);
+  }
 };
 export const login = async (req, res, next) => {
-  passport.authenticate('login', async (err, user, info) => {
+  passport.authenticate('login', { session: false }, async (err, user) => {
     try {
       if (err || !user) {
         const error = new Error('An Error occurred');
