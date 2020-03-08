@@ -17,7 +17,7 @@ const HomePresenter = () => (
         <Login>로그인</Login>
         <Join>회원가입</Join>
       </ButtonWrapper>
-      <SearchBar />
+      {/* <SearchBar /> */}
     </HeaderWrapper>
     <div id="body"></div>
     <div id="footer"></div>
