@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
-import img from '../../image/background.jpg';
+import img from '../../image/background.png';
+import logo from '../../image/logo.png';
 
 export const Wrapper = styled.div`
   /* max-width: 340px;
@@ -36,66 +37,78 @@ export const HeaderWrapper = styled.div`
   /* position: relative; */
 
   display: flex;
-  /* flex-direction: column; */
+  /* flex-direction: row; */
   /* flex-wrap: no-wrap; */
   /* justify-content: center; */
   /* align-items: center; */
   /* overflow-y: visible; */
   width: 100%;
-  height: 340px;
+  height: 450px;
 
+  background-color: #000000;
   background-image: url(${img});
   text-align: center;
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: cover;
+  background-size: contain;
   /* margin-top: 0px; */
   /* margin: 5vh 0 0 0; */
   /* height: 1000px; */
   /* border-bottom: 5px solid black; */
 `;
 
-export const ButtonWrapper = styled.div`
+export const HeaderContent = styled.div`
+  margin: 0 auto;
+  width: 1200px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+`;
+export const HeaderTopWrapper = styled.div`
+  display: flex;
+  margin: 0px 20px;
+  justify-content: space-between;
+`;
+export const HeaderBottomWrapper = styled.div`
   display: flex;
   /* align-items: center; */
-  /* position: absolute;
-  top: 0px;
-  left: 0px; */
+  margin: 50px auto;
+`;
+
+export const ButtonWrapper = styled.div`
+  display: flex;
 `;
 
 export const Title = styled.div`
-  width: 286px;
-  height: 50px;
-  /* border: 2px solid blue; */
-  font-size: 62px;
+  display: flex;
+  width: 150px;
+  height: 40px;
+  /* font-size: 62px;
   font-weight: 700;
   text-align: center;
-  vertical-align: center;
-  /* position: absolute; */
-  /* margin: auto; */
-  /* display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: flex-start; */
-  /* margin-top: 127px; */
-  color: ${props => props.theme.color.black};
-  /* margin-bottom: 102px; */
+  vertical-align: center; */
+  background-image: url(${logo});
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+`;
+
+export const SearchBar = styled.input`
+  display: flex;
+  width: 640px;
+  height: 40px;
+  border: ${props => `2px solid ${props.theme.color.darkgray}`};
+  border-radius: 5px;
 `;
 
 const smallButton = styled.div`
   width: 110px;
   height: 40px;
   cursor: pointer;
-  /* margin-left: 20px; */
-  border-radius: 10px;
-  margin: 10px;
+  /* border-radius: 10px; */
+  /* margin: 10px; */
   text-align: center;
   vertical-align: middle;
-
-  /* display: flex; */
-  /* flex-direction: row; */
-  /* justify-content: center;
-  align-items: center; */
 `;
 
 export const Login = styled(smallButton)`
@@ -107,10 +120,4 @@ export const Join = styled(smallButton)`
   /* background-color: ${props => props.theme.color.white}; */
   /* border: ${props => `1px solid ${props.theme.color.vividBlue}`}; */
   color: ${props => props.theme.color.white};
-`;
-export const SearchBar = styled.input`
-  width: 640px;
-  height: 50px;
-  border: ${props => `2px solid ${props.theme.color.darkgray}`};
-  /* margin-top: 102px; */
 `;

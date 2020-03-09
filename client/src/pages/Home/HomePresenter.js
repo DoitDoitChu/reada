@@ -7,17 +7,26 @@ import {
   Join,
   Login,
   SearchBar,
+  HeaderContent,
+  HeaderTopWrapper,
+  HeaderBottomWrapper,
 } from '../components/Style';
 
 const HomePresenter = () => (
   <Wrapper>
     <HeaderWrapper>
-      <Title>READA</Title>
-      <ButtonWrapper>
-        <Login>로그인</Login>
-        <Join>회원가입</Join>
-      </ButtonWrapper>
-      {/* <SearchBar /> */}
+      <HeaderContent>
+        <HeaderTopWrapper>
+          <Title></Title>
+          <ButtonWrapper>
+            <Join>회원가입</Join>
+            <Login>로그인</Login>
+          </ButtonWrapper>
+        </HeaderTopWrapper>
+        <HeaderBottomWrapper>
+          <SearchBar />
+        </HeaderBottomWrapper>
+      </HeaderContent>
     </HeaderWrapper>
     <div id="body"></div>
     <div id="footer"></div>
