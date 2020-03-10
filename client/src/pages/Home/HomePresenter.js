@@ -6,6 +6,7 @@ import {
   ButtonWrapper,
   Join,
   Login,
+  SearchBarWrapper,
   SearchBar,
   HeaderContent,
   BodyWrapper,
@@ -13,6 +14,7 @@ import {
   PopularSubjectsTitle,
   PopularSubjectContentWrapper,
   PopularSubjectContent,
+  BestCommentWrapper,
 } from '../components/Style';
 
 const HomePresenter = () => (
@@ -20,7 +22,6 @@ const HomePresenter = () => (
     <HeaderWrapper>
       <HeaderContent>
         <Title></Title>
-        <SearchBar />
         <ButtonWrapper>
           <Join>회원가입</Join>
           <Login>로그인</Login>
@@ -28,6 +29,9 @@ const HomePresenter = () => (
       </HeaderContent>
     </HeaderWrapper>
     <BodyWrapper>
+      <SearchBarWrapper>
+        <SearchBar />
+      </SearchBarWrapper>
       <PopularSubjectsWrapper>
         <PopularSubjectsTitle>인기 카테고리</PopularSubjectsTitle>
         <PopularSubjectContentWrapper>
@@ -39,6 +43,7 @@ const HomePresenter = () => (
           <PopularSubjectContent>과학</PopularSubjectContent>
         </PopularSubjectContentWrapper>
       </PopularSubjectsWrapper>
+      <BestCommentWrapper></BestCommentWrapper>
     </BodyWrapper>
     <div id="footer"></div>
   </Wrapper>

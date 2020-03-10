@@ -44,18 +44,21 @@ export const HeaderWrapper = styled.div`
   /* align-items: center; */
   /* overflow-y: visible; */
   width: 100%;
-  height: 300px;
-
-  background-color: #000000;
+  height: 80px;
+  /* height: 300px; */
+  /* background-color: ${props => props.theme.color.black};
   background-image: url(${img});
   text-align: center;
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: contain;
+  background-size: contain; */
   /* margin-top: 0px; */
   /* margin: 5vh 0 0 0; */
   /* height: 1000px; */
   /* border-bottom: 5px solid black; */
+
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.1);
+    z-index: 100;
 `;
 
 export const HeaderContent = styled.div`
@@ -86,15 +89,6 @@ export const Title = styled.div`
   margin-left: 10px;
 `;
 
-export const SearchBar = styled.input`
-  display: flex;
-  width: 640px;
-  height: 40px;
-  /* margin-left: 70px; */
-  border: ${props => `2px solid ${props.theme.color.darkgray}`};
-  border-radius: 5px;
-`;
-
 const smallButton = styled.div`
   width: 110px;
   height: 40px;
@@ -117,14 +111,35 @@ export const Join = styled(smallButton)`
 `;
 
 export const BodyWrapper = styled.div`
-  width: 1200px;
+  /* width: 1200px; */
+  width:100%;
   height: 1000px;
   /* background-color: ${props => props.theme.color.softOrange}; */
+`;
+
+export const SearchBarWrapper = styled.div`
+  width: 100%;
+  height: 300px;
+
+  background-color: ${props => props.theme.color.black};
+  background-image: url(${img});
+  text-align: center;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+`;
+export const SearchBar = styled.input`
+  display: flex;
+  width: 640px;
+  height: 40px;
+  /* margin-left: 70px; */
+  border: ${props => `2px solid ${props.theme.color.darkgray}`};
+  border-radius: 5px;
 `;
 export const PopularSubjectsWrapper = styled.div`
   background-color: ${props => props.theme.color.white};
   width: 1200px;
-  height: 100%;
+  height: 252px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -154,7 +169,7 @@ export const PopularSubjectContentWrapper = styled.div`
 
 export const PopularSubjectContent = styled.div`
   color: #4c4c4c;
-  background-color: #fff;
+  background-color: ${props => props.theme.color.white};
   border: 1px solid #e8e7e7;
   width: calc(20% - 100px);
   height: 40px;
@@ -168,4 +183,10 @@ export const PopularSubjectContent = styled.div`
   font-weight: 500;
   text-decoration: none;
   box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1);
+`;
+
+export const BestCommentWrapper = styled.div`
+  width: 100%;
+  height: 440px;
+  background-color: #f0f1f4;
 `;
