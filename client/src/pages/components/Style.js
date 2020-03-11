@@ -218,7 +218,7 @@ export const NewAddBookTitle = styled.div`
 
 export const NewAddBookContentWrapper = styled.div`
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(4, 2fr);
   grid-auto-rows: 1fr;
   grid-column-gap: 20px;
   grid-row-gap: 20px;
@@ -241,8 +241,8 @@ export const NewAddBookContent = styled.div`
 
 export const NewAddBookLeft = styled.a`
   background-image: url(${bookImg});
-  width: 200px;
-  height: 140px;
+  width: 80px;
+  height: 120px;
   overflow: hidden;
   display: flex;
   justify-content: center;
