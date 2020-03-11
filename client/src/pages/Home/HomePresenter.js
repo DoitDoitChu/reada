@@ -15,6 +15,12 @@ import {
   PopularSubjectContent,
   BestCommentWrapper,
   BestComment,
+  NewAddBookWrapper,
+  NewAddBookTitle,
+  NewAddBookContentWrapper,
+  NewAddBookContent,
+  NewAddBookLeft,
+  NewAddBookRight,
 } from '../components/Style';
 
 const HomePresenter = () => (
@@ -45,6 +51,18 @@ const HomePresenter = () => (
         <PopularSubjectsTitle>베스트 한줄평</PopularSubjectsTitle>
         <BestComment>블라블라블라</BestComment>
       </BestCommentWrapper>
+      <NewAddBookWrapper>
+        <NewAddBookTitle>새로 추가된 책</NewAddBookTitle>
+        <NewAddBookContentWrapper>
+          <NewAddBookContent>
+            <NewAddBookLeft></NewAddBookLeft>
+            <NewAddBookRight>담론 신영복</NewAddBookRight>
+          </NewAddBookContent>
+          <NewAddBookContent></NewAddBookContent>
+          <NewAddBookContent></NewAddBookContent>
+          <NewAddBookContent></NewAddBookContent>
+        </NewAddBookContentWrapper>
+      </NewAddBookWrapper>
     </BodyWrapper>
     <div id="footer"></div>
   </Wrapper>

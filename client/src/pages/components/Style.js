@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import img from '../../image/background.png';
 import logo from '../../image/logo.png';
+import bookImg from '../../image/damron.jpeg';
 
 export const Wrapper = styled.div`
   /* max-width: 340px;
@@ -192,4 +193,69 @@ export const BestComment = styled.div`
   color: #333;
   margin: 15px 0 60px 0;
   text-align: center;
+`;
+
+export const NewAddBookWrapper = styled.div`
+  max-width: 1200px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+`;
+
+export const NewAddBookTitle = styled.div`
+  /* display: flex; */
+  margin-left: auto;
+  margin-right: auto;
+  /* width: 200px;
+  height: 30px; */
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 29px;
+  margin-top: 50px;
+  margin-bottom: 20px;
+  text-align: center;
+`;
+
+export const NewAddBookContentWrapper = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: 1fr;
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+`;
+
+export const NewAddBookContent = styled.div`
+  color: #4c4c4c;
+  background-color: #fff;
+  border: 1px solid #e8e7e7;
+  display: flex;
+  flex-direction: row;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none;
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1);
+  text-align: left;
+  overflow: hidden;
+`;
+
+export const NewAddBookLeft = styled.a`
+  background-image: url(${bookImg});
+  width: 200px;
+  height: 140px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  background-repeat: no-repeat;
+  background-size: center;
+  background-position: center center;
+`;
+
+export const NewAddBookRight = styled.div`
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 `;
