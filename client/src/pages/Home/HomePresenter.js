@@ -21,6 +21,10 @@ import {
   NewAddBookContent,
   NewAddBookLeft,
   NewAddBookRight,
+  BookTitle,
+  BookWriter,
+  BookGpa,
+  BookReviewCount,
 } from '../components/Style';
 
 const HomePresenter = () => (
@@ -56,7 +60,12 @@ const HomePresenter = () => (
         <NewAddBookContentWrapper>
           <NewAddBookContent>
             <NewAddBookLeft></NewAddBookLeft>
-            <NewAddBookRight>담론 신영복</NewAddBookRight>
+            <NewAddBookRight>
+              <BookTitle></BookTitle>
+              <BookWriter></BookWriter>
+              <BookGpa></BookGpa>
+              <BookReviewCount></BookReviewCount>
+            </NewAddBookRight>
           </NewAddBookContent>
           <NewAddBookContent></NewAddBookContent>
           <NewAddBookContent></NewAddBookContent>

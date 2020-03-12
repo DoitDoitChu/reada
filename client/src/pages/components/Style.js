@@ -259,3 +259,11 @@ export const NewAddBookRight = styled.div`
   flex-direction: column;
   justify-content: center;
 `;
+
+export const BookTitle = styled.div``;
+
+export const BookWriter = styled.div``;
+
+export const BookGpa = styled.div``;
+
+export const BookReviewCount = styled.div``;
