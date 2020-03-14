@@ -22,16 +22,14 @@ const BookSchema = new mongoose.Schema({
     type: Date,
     dafault: Date.now
   },
+  tags: [String],
   reviews: [
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Review'
     }
   ],
-  genre: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Genre'
-  }
+  genre: Number
 });
 
 const model = mongoose.model('Book', BookSchema);

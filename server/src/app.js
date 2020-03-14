@@ -20,9 +20,9 @@ app.use(helmet());
 app.use(cors());
 app.use(morgan('combined'));
 
-app.use(routes.home, globalRouter);
-app.use(routes.users, userRouter);
-app.use(routes.books, bookRouter);
+app.use('/', globalRouter);
+app.use('/user', userRouter);
+app.use('/books', bookRouter);
 
 app.use(function(err, req, res, next) {
   return res.status(err.status || 500).json({ error: err });

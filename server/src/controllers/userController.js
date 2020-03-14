@@ -58,7 +58,7 @@ export const login = async (req, res, next) => {
         return res.status(403).json({
           success: false,
           message: info,
-          state: null
+          result: null
         });
       }
       req.login(user, { session: false }, async error => {
@@ -66,7 +66,7 @@ export const login = async (req, res, next) => {
           return res.status(403).json({
             success: false,
             message: error,
-            state: null
+            result: null
           });
         }
         const body = { _id: user._id, email: user.email };
@@ -74,7 +74,7 @@ export const login = async (req, res, next) => {
         return res.status(200).json({
           success: true,
           message: '로그인인을 성공적으로 하셨습니다.',
-          state: token
+          result: token
         });
       });
     } catch (error) {
