@@ -267,3 +267,100 @@ export const BookWriter = styled.div``;
 export const BookGpa = styled.div``;
 
 export const BookReviewCount = styled.div``;
+
+// register
+
+export const HeaderWrapperBasic = styled.div`
+  /* border: 2px solid rgba(0, 0, 0, 0.15); */
+  /* background-color: ${props => props.theme.color.white}; */
+  /* position: relative; */
+
+  display: flex;
+  flex-direction: column;
+  /* flex-wrap: no-wrap; */
+  /* justify-content: center; */
+  align-items: center;
+  /* overflow-y: visible; */
+  width: 100%;
+  height: 80px;
+
+  background-color: ${props => props.theme.color.black};
+  /* background-image: url(${img}); */
+  text-align: center;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+`;
+
+export const SearchBarBasic = styled.div`
+  display: flex;
+  /* justify-content: center; */
+  /* align-content: center; */
+  /* align-items: center; */
+  width: 640px;
+  height: 40px;
+  /* margin-left: 70px; */
+  border: ${props => `2px solid ${props.theme.color.darkgray}`};
+  border-radius: 5px;
+  margin-top: -80px;
+  background-color: transparent;
+`;
+
+export const JoinWrapper = styled.div`
+  width: 340px;
+  flex: 1;
+  height: fit-content;
+  display: inline-block;
+  padding: 40px 16px 48px 16px;
+  margin: 20vh 0 20vh 0;
+  box-shadow: 0 2px 14px 0 rgba(0, 0, 0, 0.1);
+  border: 2px solid rgba(0, 0, 0, 0.15);
+  background-color: ${props => props.theme.color.white};
+`;
+
+export const JoinTitle = styled.div`
+  display: flex;
+  /* width: 200px;
+  height: 30px; */
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 29px;
+  margin-top: 50px;
+  margin-bottom: 20px;
+  text-align: center;
+`;
+
+export const InputTitle = styled.div`
+  width: 100%;
+  height: 20px;
+  margin: 16px 0 6px 0;
+  font-size: 14px;
+  color: ${props => props.theme.color.darkGrayishBlue};
+  display: flex;
+`;
+
+export const Input = styled.input`
+  width: 100%;
+  height: 48px;
+  margin-top: 10px;
+  padding-left: 8px;
+  border-radius: 4px;
+  border: 1px solid ${props => props.theme.color.darkGrayishBlue};
+  outline: none;
+`;
+
+export const JoinButton = styled.button`
+  width: 100%;
+  height: 56px;
+  padding: 0;
+  margin: 32px 0 0 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  letter-spacing: -0.3px;
+  border: none;
+  border-radius: 4px;
+  background-color: red;
+  color: white;
+`;
