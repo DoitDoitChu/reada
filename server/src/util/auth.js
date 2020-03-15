@@ -2,6 +2,7 @@ import passport from 'passport';
 import { Strategy as LocalStratecy } from 'passport-local';
 import { Strategy as JWTstrategy, ExtractJwt } from 'passport-jwt';
 import UserModel from '../models/User';
+import logger from './logger';
 
 passport.use(
   'login',
@@ -19,7 +20,7 @@ passport.use(
         }
 
         const validate = await user.isValidPassword(password);
-
+        console.log('$$$$$$$$$$$$$', validate, password);
         if (!validate) {
           return done(null, false, { message: 'Wrong Password' });
         }
@@ -39,15 +40,27 @@ passport.use(
       secretOrKey: process.env.JWT_SECRET
     },
     async (jwtPayload, done) => {
+      logger(jwtPayload);
+      const {
+        user: { _id }
+      } = jwtPayload;
+      logger(_id);
       try {
-        const user = await UserModel.findById(jwtPayload.id);
+        const user = await UserModel.findById(_id);
         if (!user) {
           return done(null, false, { message: 'User not found' });
         }
-        return user;
+        return done(null, user, { message: 'jwt auth passed' });
       } catch (err) {
         return done(err);
       }
     }
   )
 );
+
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+passport.deserializeUser(function(user, done) {
+  done(null, user);
+});

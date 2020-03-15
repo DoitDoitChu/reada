@@ -1,19 +1,33 @@
 import mongoose from 'mongoose';
 import bcrypt from 'bcrypt';
+import { number } from 'joi';
 
 const UserSchema = new mongoose.Schema({
   email: {
     type: String,
-    required: true,
-    unique: true
+    required: true
   },
   password: {
     type: String,
     required: true
   },
   username: String,
-  avatarUrl: String,
-  facebookId: String
+  avatarUrl: {
+    type: String,
+    default: '/static/images/default_thumbnail.png'
+  },
+  social: {
+    facebook: {
+      id: String,
+      accessToken: String
+    },
+    google: {
+      id: String,
+      accessToken: String
+    }
+  },
+  reviewCount: { type: Number, defualt: 0 },
+  createdAt: { type: Date, default: Date.now }
 });
 
 UserSchema.pre('save', async function(next) {
