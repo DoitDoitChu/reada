@@ -87,7 +87,9 @@ export const Title = styled.div`
   margin-left: 10px;
 `;
 
-export const SearchBar = styled.input`
+export const SearchWrapper = styled.div``;
+
+export const SearchInput = styled.input`
   display: flex;
   /* justify-content: center; */
   /* align-content: center; */
@@ -99,7 +101,10 @@ export const SearchBar = styled.input`
   border-radius: 5px;
   margin-top: 80px;
   background-color: transparent;
+  color: white;
 `;
+
+export const SearchReuslt = styled.div``;
 
 const smallButton = styled.div`
   width: 110px;
@@ -290,6 +295,7 @@ export const HeaderWrapperBasic = styled.div`
   background-repeat: no-repeat;
   background-position: center center;
   background-size: contain;
+  /* box-shadow: 0 0 0 3px; */
 `;
 
 export const SearchBarBasic = styled.div`
