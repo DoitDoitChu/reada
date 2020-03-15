@@ -57,16 +57,26 @@ export const bookDetail = async (req, res) => {
   res.status(200).json({ success: true, message: 'book detail Data', result: book });
 };
 
-export const editBook = (req, res) => {
+export const editBook = async (req, res) => {
   const { ObjectId } = Types;
   const { id } = req.params;
 
-  if (ObjectId.isValid(id)) {
+  if (!ObjectId.isValid(id)) {
     res.status(400);
     return;
   }
 
-  res.json({ success: true, message: 'editBook' });
+  let book = null;
+
+  try {
+    book = await Book.findByIdAndUpdate(id, req.body, {
+      new: true
+    });
+  } catch (error) {
+    res.status(500).json({ success: false, message: 'update did not proceess', result: book });
+  }
+
+  res.status(200).json({ success: true, message: 'editBook', result: book });
 };
 
 export const deleteBook = async (req, res) => {
