@@ -1,6 +1,5 @@
 import mongoose from 'mongoose';
 import bcrypt from 'bcrypt';
-import { number } from 'joi';
 
 const UserSchema = new mongoose.Schema({
   email: {
@@ -38,6 +37,20 @@ UserSchema.pre('save', async function(next) {
 
   next();
 });
+
+UserSchema.statics.findByUsername = function(username) {
+  return this.findOne({ username }).exec();
+};
+
+UserSchema.statics.findByEmail = function(email) {
+  return this.findOne({ email }).exec();
+};
+
+UserSchema.statics.findByEmailOrUsername = function({ username, email }) {
+  return this.findOne({
+    $or: [{ username }, { email }]
+  }).exec();
+};
 
 UserSchema.methods.isValidPassword = async function(password) {
   const user = this;

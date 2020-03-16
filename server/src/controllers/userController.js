@@ -5,12 +5,14 @@ import logger from '../util/logger';
 
 export const join = async (req, res, next) => {
   logger('userController - join');
+
   try {
     const { email, password, password2, username } = req.body;
     const emailRegexr = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
     const passwordRegexr = /(?=.*\d)(?=.*[`~!@#$%^&*|₩₩₩'₩";:₩/?])(?=.*[a-zA-Z]).{8,}/;
 
     if (!emailRegexr.test(email)) {
+      logger('이메일 형식에 맞지 않습니다.');
       return res.status(401).json({
         success: false,
         message: '이메일 형식에 맞지 않습니다.',
@@ -18,6 +20,7 @@ export const join = async (req, res, next) => {
       });
     }
     if (!passwordRegexr.test(password)) {
+      logger('비밀번호는 8자 이상, 영문, 숫자, 특수문자를 포함하여야 합니다.');
       return res.status(401).json({
         success: false,
         message: '비밀번호는 8자 이상, 영문, 숫자, 특수문자를 포함하여야 합니다.',
@@ -26,24 +29,29 @@ export const join = async (req, res, next) => {
     }
 
     if (password !== password2) {
+      logger('password와 password2가 일치하지 않습니다.');
       return res.status(400).json({
         success: false,
         message: 'password와 password2가 일치하지 않습니다.',
         result: null
       });
     }
-    const exUser = await UserModel.findOne({ email });
+    const exUser = await UserModel.findByEmail(email);
 
     if (exUser) {
-      return res.status(403).json({
-        success: false,
-        message: '해당 이메일을 가진 사용자가 존재합니다.',
-        result: null
-      });
+      logger('해당 이메일을 가진 사용자가 존재합니다.');
+      return res.status(403).send(
+        JSON.stringify({
+          error: '해당 이메일을 가진 사용자가 존재합니다.'
+        })
+      );
     }
+
+    logger('hihihihihi');
 
     const user = new UserModel({ email, password, username });
     user.save();
+    logger(user);
 
     const token = jwt.sign({ user }, process.env.JWT_SECRET, { expiresIn: '7d' });
 
@@ -94,7 +102,7 @@ export const login = async (req, res, next) => {
           .json({
             success: true,
             message: '로그인을 성공적으로 하셨습니다.',
-            token: 'Bearer ' + token,
+            token: `Bearer ${token}`,
             result: {
               email: user.email,
               username: user.username,
