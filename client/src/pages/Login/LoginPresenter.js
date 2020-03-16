@@ -35,7 +35,7 @@ const LoginPresenter = () => {
       .then(res => {
         console.log(('res:', res));
       })
-      .catch(error => console.log('error:', error));
+      .catch(error => console.log('error:', error.response, error));
   };
 
   console.log('userObj', userObj);

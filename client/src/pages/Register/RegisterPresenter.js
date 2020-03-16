@@ -36,9 +36,9 @@ const RegisterPresenter = () => {
       data: obj,
     })
       .then(res => {
-        console.log(('res:', res));
+        console.log('res: ' + res);
       })
-      .catch(error => console.log('error:', error));
+      .catch(error => console.log('error:', error.response));
   };
 
   console.log('userObj', userObj);
