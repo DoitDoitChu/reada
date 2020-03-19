@@ -13,9 +13,17 @@ const ReviewSchema = mongoose.Schema({
     type: Date,
     default: Date.now
   },
+  updatedAt: {
+    type: Date,
+    default: Date.now
+  },
   book: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Book'
+  },
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
   }
 });
 

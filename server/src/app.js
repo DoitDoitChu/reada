@@ -7,7 +7,7 @@ import cors from 'cors';
 import globalRouter from './routes/globalRouter';
 import userRouter from './routes/userRouter';
 import bookRouter from './routes/bookRouter';
-
+import reviewRouter from './routes/reviewRouter';
 import './util/auth';
 import jwtMiddleware from './util/token';
 
@@ -24,6 +24,7 @@ app.use(jwtMiddleware);
 app.use('/', globalRouter);
 app.use('/user', userRouter);
 app.use('/books', bookRouter);
+app.use('/review', reviewRouter);
 
 app.use(function(err, req, res, next) {
   return res.status(err.status || 500).json({ error: err });
