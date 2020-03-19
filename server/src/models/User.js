@@ -25,8 +25,10 @@ const UserSchema = new mongoose.Schema({
       accessToken: String
     }
   },
+  reviews: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Review' }],
   reviewCount: { type: Number, defualt: 0 },
-  createdAt: { type: Date, default: Date.now }
+  createdAt: { type: Date, default: Date.now },
+  updatedAt: { type: Date, default: Date.now }
 });
 
 UserSchema.pre('save', async function(next) {
