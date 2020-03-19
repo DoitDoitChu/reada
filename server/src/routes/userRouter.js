@@ -6,8 +6,8 @@ import { users, userDetail, editProfile, check } from '../controllers/userContro
 const userRouter = express.Router();
 
 userRouter.get('/check', check);
-userRouter.get(routes.userDetail, passport.authenticate('jwt', { session: false }), userDetail);
+userRouter.get(routes.userDetail, userDetail);
 userRouter.get(routes.users, users);
-userRouter.put(routes.editProfile, editProfile);
+userRouter.put(routes.editProfile, passport.authenticate('jwt', { session: false }), editProfile);
 
 export default userRouter;
