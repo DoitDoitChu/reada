@@ -47,8 +47,6 @@ export const join = async (req, res, next) => {
       );
     }
 
-    logger('hihihihihi');
-
     const user = new UserModel({ email, password, username });
     user.save();
     logger(user);

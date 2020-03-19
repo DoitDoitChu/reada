@@ -1,4 +1,3 @@
-import Joi from 'joi';
 import { Types } from 'mongoose';
 import Book from '../models/Book';
 
