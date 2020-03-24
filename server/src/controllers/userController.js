@@ -93,14 +93,14 @@ export const login = async (req, res, next) => {
 
         return res
           .status(201)
-          .cookie('access_token', `Bearer ${token}`, {
+          .cookie('access_token', `${token}`, {
             httpOnly: true,
             maxAge: 1000 * 60 * 60 * 24 * 7
           })
           .json({
             success: true,
             message: '로그인을 성공적으로 하셨습니다.',
-            token: `Bearer ${token}`,
+            token: `${token}`,
             result: {
               email: user.email,
               username: user.username,
