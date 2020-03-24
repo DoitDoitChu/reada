@@ -34,9 +34,10 @@ passport.use(
 );
 
 passport.use(
+  'jwt',
   new JWTstrategy(
     {
-      jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+      jwtFromRequest: ExtractJwt.fromAuthHeaderWithScheme('Bearer'),
       secretOrKey: process.env.JWT_SECRET
     },
     async (jwtPayload, done) => {
@@ -44,7 +45,7 @@ passport.use(
       const {
         user: { _id }
       } = jwtPayload;
-      logger(_id);
+
       try {
         const user = await UserModel.findById(_id);
         if (!user) {
