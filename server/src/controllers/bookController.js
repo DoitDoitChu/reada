@@ -30,7 +30,7 @@ export const upload = async (req, res) => {
       tags
     });
 
-    book.save();
+    await book.save();
 
     res.status(200).json({ success: true, message: 'upload success', result: book });
   } catch (error) {
@@ -71,11 +71,10 @@ export const editBook = async (req, res) => {
     book = await Book.findByIdAndUpdate(id, req.body, {
       new: true
     });
+    res.status(200).json({ success: true, message: 'editBook', result: book });
   } catch (error) {
     res.status(500).json({ success: false, message: 'update did not proceess', result: book });
   }
-
-  res.status(200).json({ success: true, message: 'editBook', result: book });
 };
 
 export const deleteBook = async (req, res) => {
@@ -83,9 +82,8 @@ export const deleteBook = async (req, res) => {
 
   try {
     await Book.findByIdAndRemove(id).exec();
+    res.status(204).json({ success: true, message: 'book data deleted', result: true });
   } catch (error) {
     res.status(404).json({ success: false, message: error, result: null });
   }
-
-  res.status(204).json({ success: true, message: 'book data deleted', result: true });
 };
